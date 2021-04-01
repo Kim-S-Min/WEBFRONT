@@ -6,50 +6,75 @@
   </head>
 
   <body>
-    <h1>건강음료</h1>
+    <head>
+      <h1>건강음료</h1>
+    </head>
+    <nav>
+      <!-- 리스트를 활용한 메뉴 -->
+      <ul> 
+        <!-- ul: 순서 없는 리스트 -->
+        <!-- ol: 순서 있는 리스트 -->
+        <li>Green</li>
+        <li>Bule</li>
+        <li>Purple</li>
+        <li>Red</li>
+      </ul>
+  </nav>
+  
+  <article>
 
-    <!-- 메뉴 넣기 -->
-    <ul> 
-      <!-- ul: 순서 없는 리스트 -->
-      <!-- ol: 순서 있는 리스트 -->
-      <li>Green</li>
-      <li>Bule</li>
-      <li>Purple</li>
-      <li>Red</li>
-    </ul>
-    <h2>Green Tea Cooler</h2>
-    <!-- 상대 경로를 이용
-      .: 현재 위치
-      ..: 부모 디렉터리
-    -->
-    <!-- 상대 경로를 활용한 이미지 삽입 -->
-    <img src="./images/green.jpg" alt="Green Tea Cooler" />
-    <p>
-      Chock full of vitamins and minerals, this elixir combines the healthful benefits of green tea with a twist of chamomile blossoms 
-      and ginger root.
-    </p>
-    
-    <h2>Raspberry Ice Concentration</h2>
-    <img src="images/lightblue.jpg" alt="Resapberry Ice Concentration" />
-    <p>
-      Combining raspberry juice with lemon grass, citrus peel and rosehips, this icy drink will make your mind feel clear
-      and crisp.
-    </p>
+    <!-- 시맨틱 태그는 div의 일종이지만, 좀더 구체적인 의미를 가지는 공간 점유 태그 -->
+    <div>
+      <img src="./images/Penguins.jpg" alt="Seller" />
+    </div>
 
-    <h2>Blueberry Bliss Elixir</h2>
-    <img src="images/blue.jpg" alt="Blueberry Bliss Elixir" />
-    <p>
-      Blueberries and cherry essence mixed into a base of elderflower herb tea will put you in a relaxed state of bliss in no time.
-    </p>
+    <section><!-- section: 내부 섹션을 구분하는 시맨틱 태크 -->
+      <h2>Green Tea Cooler</h2>
+      <!-- 상대 경로를 이용
+        .: 현재 위치
+        ..: 부모 디렉터리
+      -->
+      <!-- 상대 경로를 활용한 이미지 삽입 -->
+      <img src="./images/green.jpg" alt="Green Tea Cooler" />
+      <p>
+        Chock full of vitamins and minerals, this elixir combines the healthful benefits of green tea with a twist of chamomile blossoms 
+        and ginger root.
+      </p>
+    </section>
 
-    <h2>Cranberry Antioxidant Blast</h2>
-    <img src="images/red.jpg" alt="Cranberry Antioxidant Blast" />
-    <p>
-      Wake up to the flavors of cranberry and hibiscus in this vitamin C rich elixir.
-    </p>
+    <section>
+      <h2>Raspberry Ice Concentration</h2>
+      <img src="images/lightblue.jpg" alt="Resapberry Ice Concentration" />
+      <p>
+        Combining raspberry juice with lemon grass, citrus peel and rosehips, this icy drink will make your mind feel clear
+        and crisp.
+      </p>
+    </section>
+
+    <section>
+      <h2>Blueberry Bliss Elixir</h2>
+      <img src="images/blue.jpg" alt="Blueberry Bliss Elixir" />
+      <p>
+        Blueberries and cherry essence mixed into a base of elderflower herb tea will put you in a relaxed state of bliss in no time.
+      </p>
+    </section>
+
+    <section>
+      <h2>Cranberry Antioxidant Blast</h2>
+      <img src="images/red.jpg" alt="Cranberry Antioxidant Blast" />
+      <p>
+        Wake up to the flavors of cranberry and hibiscus in this vitamin C rich elixir.
+      </p>
+    </section>
+  </article>
+
+  <nav>
     <p>
       <a href="index.html">메인으로 돌아가기</a>
     </p>
+  </nav>
+
+  <footer>&copy; Bit Lounge, 2021</footer>
   
   </body>
   </html>
