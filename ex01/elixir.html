@@ -4,6 +4,135 @@
       <title>Bit Lounge 건강음료</title>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <link rel="stylesheet" href="./styles/styles.css" />
+      <!-- 연습을 위해 Page CSS로 진행 -->
+      <style>
+        /* 구조 선택자: 형제 관계에서의 위치로 요소를 선택 */
+        /* class=menu인 요소의 자식 li중 첫번째 형제 */
+        .menu > li:first-child {
+          /* 키워드 이용 색상 선택 */
+          /*background-color: lightgreen; */
+          background-color: rgba(0, 127, 0, 0.1);
+        }
+
+        /* class=menu인 요소의 자식 li 중 두번째 형제 */
+        .menu > li:nth-child(2) {
+          /* background-color: blue; */
+          background-color: #0000FF20;
+        }
+        
+        /* class=menu인 요소의 자식 li 중 뒤에서 두번째 형제 */
+        .menu > li:nth-last-child(2) {
+          /* background-color: plum; */
+          background-color: rgba(127, 0, 127, 0.1);
+        }
+
+        /* class=menu인 요소의 자식 li 중에서 마지막 형제 */
+        .menu > li:last-child {
+          /* background-color: pink; */
+          /* background-color: #FF000022; */
+          background-color: #F002;  /* =#FF000022 */
+        }
+
+        /* class=beverage 요서의 자식 h2 */
+        .beverage > h2 {
+          /* 브라우저의 기본 폰트 사이즈는 16px */
+          /* 절대 단위 px: 화면에 표시되는 점 한개 */
+          /* font-size: 24px; */
+          /* 상대 단위 %: 비율 */
+          /* font-size: 150%; */
+          /* 상대 단위 em: 비율 */
+          font-size: 1.5em;
+          font-weight: bold;  
+        }
+
+        .beverage > p {
+          font-size: 1.2em; /* 16px의 1.2배 = 120% */
+          font-weight: 400; /* =normal */
+        }
+
+        body {
+          /* 표시할 글꼴의 후보군을 나열 
+            앞쪽 폰트부터 적용되고 없으면 뒤쪽 후보 글꼴이 대체,
+            최종적으로 일반 글꼴(serif, sans-serif, monospace)을 명시한다
+          */
+          /*font-family: 'Courier New', Courier, monospace;*/
+          font-family: '맑은 고딕', 돋움, sans-serif;
+        }
+
+        .feature {
+          /* test-decoration 속성: 선으로 요소를 꾸미는 속성 */
+          /* none,  */
+          text-decoration: underline;
+        }
+
+        /* border 속성: 요소의 테두리를 꾸미는 속성 */
+        .beverage {
+          /* 개별 속성을 적용할 때는 접미사를 붙인다 */
+          /* border-width: 3px;
+          border-style: dashed;
+          border-color: gray; */
+
+          /* 일괄 적용: width style color 순 */
+          border: 3px dashed gray;
+        }
+
+        .beverage img{
+          /* 값이 1개: 전 방향 적용 */
+          padding: 10px;
+        }
+
+        .beverage h2{
+          /* 값이 2개: 위-아래 왼쪽-오른쪽 */
+          margin:0 10px;
+        }
+
+        .beverage p{
+          /* 값이 4개: 위 오른쪽 아래 왼쪽 순 */
+          margin: 20px 10px 10px 10px;
+        }
+
+        .seller img{
+          border-radius: 20px; /* 네 귀퉁이 모두에 둥글기 적용 */
+
+          border-radius: 10px 20px 30px 40px; /* 좌측위 우측위 오른쪽 아래 */
+
+          border-top-left-radius: 100px; /* 특정 방향 접미사 이용 */
+
+          border-radius: 50%; /* 비율에 의한 모서리 다듬기 */
+
+          /* display 속성: 공간 점유 방식을 변경 -> none, block, inline, inline-block */
+          /* none -> 공간 자체를 점유하지 않는다 */
+          /* display: none; */
+          /* visibility 속성: 표시 여부만 결정
+            visible, hidden
+            visibility: hidden
+          */
+        }
+
+        .menu > li {
+          float: left;
+          width: 100px;
+          height: 25px;
+          list-style-type: none;
+          text-align: center;
+          margin-bottom: 10px;
+          margin-right: 5px;
+        }
+
+        .beverage.green.img, .beverage.blue img {
+          float: left;
+          margin-right: 10px;
+        }
+
+        .beverage.blue img {
+          float: right;
+          margin-left: 10px;
+        }
+        .beverage:nth-child(2n) {
+          float: left;
+          margin-right: 10px;
+        }
+      </style>
   </head>
 
   <body>
@@ -13,7 +142,7 @@
 
     <nav><!-- nav: 메뉴 등 사이트 네비게이션 관련 시맨틱 태그 -->
       <!-- 리스트를 활용한 메뉴 -->
-      <ul> 
+      <ul class="menu"> 
         <!-- ul: 순서 없는 리스트 -->
         <!-- ol: 순서 있는 리스트 -->
         <li>Green</li>
@@ -26,8 +155,8 @@
   <article>
 
     <!-- 시맨틱 태그는 div의 일종이지만, 좀더 구체적인 의미를 가지는 공간 점유 태그 -->
-    <div>
-      &nbsp;&nbsp;&nbsp;&nbsp;<img src="./images/unm.jpg" width="400" height="350" alt="Seller" />
+    <div class="seller">
+      <img src="./images/Penguins.jpg" alt="Seller" />
     </div>
 
     <!-- id속성: HTML내에서 사용되는 유일 식별자
@@ -42,7 +171,7 @@
         <!-- 상대 경로를 활용한 이미지 삽입 -->
         <img src="./images/green.jpg" alt="Green Tea Cooler" />
         <p>
-          Chock full of vitamins and minerals, this elixir combines the healthful benefits of green tea with a twist of chamomile blossoms 
+          Chock full of <span class="feature">vitamins and minerals</span>, this elixir combines the healthful benefits of green tea with a twist of chamomile blossoms 
           and ginger root.
         </p>
       </div>
@@ -92,3 +221,4 @@
   </html>
 
 
+**

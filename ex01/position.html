@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Position Example</title>
+        <style>
+            .box {
+                width: 100px;
+                height: 100px;
+
+                /* 좌표계를 절대 좌표계로 변경 */
+                /* left, top, rigth, bottom 속성을 이용 */
+                position:absolute;
+            }
+
+            .box:first-child {
+                background-color: red;
+                left: 10px;
+                top: 10px;
+            }
+
+            .box:nth-child(2) {
+                background-color: green;
+                left: 50px;
+                top: 50px;
+                z-index: 10;    /* z축의 순서 조정: 이 값이 크면 앞쪽 */
+            }
+
+            .box:last-child {
+                background-color: blue;
+                left: 91px;
+                top: 90px;
+            }
+
+            .container {
+                margin-top:50px;
+                border: 2px solid black;
+                position: relative;
+
+                /* 자식의 좌표계를 absolute로 설정하려면
+                    부모의 좌표계를 relative로 설정하는 것이 좋다 */
+                height: 100px;
+
+                /* 자식의 영역이 부모를 벗어날 때의 처리 */
+                overflow: hidden;   /* 넘어간 내용은 표시하지 않는다 */
+                overflow: scroll;   /* 넘어간 내용은 스크롤로 처리 */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+    </body>
+
+</html>
