@@ -4,6 +4,47 @@
         <title>멤버십 가입</title>
         <meta http-equiv="Content-Type"
             content="text/html;charset=UTF-8" />
+        <!-- 가급적 External로 합시다 -->
+        <!-- 연습을 위해서 Page CSS로 진행 -->
+        <style>
+            /* 속성 선택자: 특성 속성의 유무, 특성 속성의 특정 값을 조건으로 요소를 선택 */
+            /* type 속성을 가진 모든 요소를 선택한다 */
+            *[type] {
+                background-color: beige;
+            }
+
+            /* type 속성이 text인 모든 input 태그 */
+            input[type=text] {
+                background-color: rgba(144, 238, 144, 0.384);
+            }
+
+            /* type 속성이 password인 모든 input 태그 */
+            input[type=password] {
+                background-color: lightblue;
+            }
+
+            /* 상태 선택자: 입력 양식의 상태에 따라 요소 선택 */
+            /* :enabled -> 입력 가능한 양식
+                disabled 속성이 없거나
+                disabled=false
+            */
+            input:enabled {
+                background-color: white;
+            }
+
+            /* :disabled -> 입력 불가 양식
+                disabled 속성이 있거나
+                disabled=true
+            */
+            input:disabled {
+                background-color: lightgray;
+            }
+
+            /* focus: -> 입력 양식에 초점이 맞춰진 상태 */
+            input:focus {
+                background-color: orange;
+            }
+        </style>
     </head>
     <body>
         <h1>멤버십 가입</h1>
@@ -54,6 +95,7 @@
                 <input type="checkbox" name="favorite" value="latte" />라떼
                 <input type="checkbox" name="favorite" value="ade" />에이드
                 <input type="checkbox" name="favorite" value="tea" />녹차/홍차
+                <br/>
 
                 <label for="telecom">통신사</label>
                 <!-- 서버로는 선택된 option의 value 가 전송된다 -->
