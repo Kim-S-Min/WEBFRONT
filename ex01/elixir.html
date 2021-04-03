@@ -119,19 +119,16 @@
           margin-right: 5px;
         }
 
-        .beverage.green.img, .beverage.blue img {
+        .beverage.green.img, .beverage.purple img {
           float: left;
           margin-right: 10px;
         }
 
-        .beverage.blue img {
+        .beverage.blue img, .beverage.red img {
           float: right;
           margin-left: 10px;
         }
-        .beverage:nth-child(2n) {
-          float: left;
-          margin-right: 10px;
-        }
+
       </style>
   </head>
 
@@ -140,17 +137,17 @@
       <h1>건강음료</h1>
     </head>
 
-    <nav><!-- nav: 메뉴 등 사이트 네비게이션 관련 시맨틱 태그 -->
+    <nav><!-- nav: 메뉴 등 사이트 네비게이션 관련 시맨틱 태그-->
       <!-- 리스트를 활용한 메뉴 -->
-      <ul class="menu"> 
+      <ul class="menu">
         <!-- ul: 순서 없는 리스트 -->
         <!-- ol: 순서 있는 리스트 -->
-        <li>Green</li>
-        <li>Bule</li>
-        <li>Purple</li>
-        <li>Red</li>
+        <li><a href="#green">Green</a><!-- id로 링크 --></li>
+        <li><a href="#blue">Blue</a></li>
+        <li><a href="#purple">Purple</a></li>
+        <li><a href="#red">Red</a></li>
       </ul>
-  </nav>
+    </nav>
   
   <article>
 
@@ -162,6 +159,8 @@
     <!-- id속성: HTML내에서 사용되는 유일 식별자
       #으로 사용 -->
     <section id="green"><!-- section: 내부 섹션을 구분하는 시맨틱 태크 -->
+      <!-- 클래스는 여러 요소가 가질 수 있고,
+        한 요소가 여러 개의 클래스를 가질 수 있다 -->
       <div class="green beverage">
         <h2>Green Tea Cooler</h2>
         <!-- 상대 경로를 이용
