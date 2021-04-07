@@ -65,6 +65,20 @@
                 //  부모로부터 분리
                 parent.removeChild(removeItem);
             });
+            //  앞에 삽입하고자 할때
+            //  1. 자식이 없을때, append
+            console.log(container.hasChildNodes());
+            console.log(container.children);
+            if (container.hasChildNodes() && container.children.length > 0) {
+                //  삽입 가능
+                //  부모 확인 -> 새 노드 생성 -> 삽입할 위치
+                console.log(container)
+                document.insertBefore(itemNode, container.children[0]);
+            } else {
+                //  itemNode를 부모에 추가
+                container.appendChild(itemNode);
+
+            }
             //  itemNode를 부모에 추가
             container.appendChild(itemNode);
             //  input#item 값을 초기화
