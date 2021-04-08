@@ -31,13 +31,14 @@
 
 <body>
     <div id="product-info">
+        <img id="main-image" src="images/iphone-xs.jpeg" class="selected" title="iPhones XS">
         <!-- inline 방식으로 스크립트 실행 -->
-        <img 
+        <!-- img 
             id="main-image" 
             src="images/iphone-xs.jpeg" 
             class="selected" 
             title="iPhones XS"
-            onclick="alert(this.title);">
+            onclick="alert(this.title);" --> 
         <h2>iPhone Xs</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
             magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -47,44 +48,47 @@
         <h3>Products</h3>
         <ul id="product-list">
             <li><img class="sub-image" 
-                src="images/iphone-xs.jpeg" 
-                title="iPhone XS"
-                data-color="red"></li>
+                    src="images/iphone-xs.jpeg" 
+                    title="iPhone XS"
+                    data-color="red"></li>
             <li><img class="sub-image" 
-                src="images/iphone-xr.jpeg" 
-                title="iPhone XR"
-                data-color="green"></li>
+                    src="images/iphone-xr.jpeg" 
+                    title="iPhone XR"
+                    data-color="green"></li>
             <li><img class="sub-image" 
-                src="images/iphone8.jpeg" 
-                title="iPhone 8"
-                data-color="blue"></li>
+                    src="images/iphone8.jpeg" 
+                    title="iPhone 8"
+                    data-color="blue"></li>
             <li><img class="sub-image" 
-                src="images/ipad-mini.jpeg" 
-                title="iPad Mini"
-                data-color="purple"></li>
+                    src="images/ipad-mini.jpeg" 
+                    title="iPad Mini"
+                    data-color="purple"></li>
         </ul>
         <input type="text" id="keyword" /><button id="btn-search">검색</button>
     </div>
 </body>
 <script>
     function testAttribute() {
-        //  id가 main-image인 요소를 선택해서 속성을 확인해보자
+        //  id가 main-image인 요소를 선택하여 속성을 확인
         var obj = document.getElementById("main-image");
-        console.log("#main-image: ", obj);
+        console.log("#main-image:", obj);
         //  선택한 요소의 모든 속성명을 반환
         console.log(obj.getAttributeNames());
         //  속성 조회: title 속성
-        console.log("title 속성: ",
+        console.log("title 속성:", 
             obj.getAttribute("title"));
 
-        //  하단의 Products 이미지들을 선택하여 title 속성을 확인하자
-        var subs = document.getElementsByClassName("sub-image");
-        console.log(".sub-image: ", subs);
+        //  하단의 Products 이미지들 (.sub-image)
+        //  선택하여 title 속성을 확인
+        var subs = 
+        document.getElementsByClassName("sub-image");
+        console.log(".sub-image:", subs);
         //  HTMLCollection -> loop 필요
         for (var i = 0; i < subs.length; i++) {
             var sub = subs[i];
-            console.log("sub title 속성: ", sub.getAttribute("title"));
+            console.log("sub title 속성:", sub.getAttribute("title"));
         }
+
     }
     // testAttribute();
     //  이벤트 리스너 부착 방법 2.
@@ -124,12 +128,13 @@
                 var btn = document.querySelector("#btn-search");
                 btn.innerText = event.target.value + ": 검색";
             });
-        var product = document.getElementsByClassName("sub-image");
-        //  console.log(products);  //  HTMLCollection -> loop
-        for (var i = 0; i < product.length; i++) {
+
+        var products = document.getElementsByClassName("sub-image");
+        // console.log(products);  //  HTMLCollection -> loop
+        for (var i = 0; i < products.length; i++) {
             //  개발 상품
             var product = products[i];
-            //  console.log(product);
+            // console.log(product);
             product.addEventListener("click", function(event) {
                 //  개발 상품의 src -> img#main-image의 src 속성으로
                 //      title -> img#main-image의 title 속성으로
@@ -141,14 +146,14 @@
 
                 var title = document.querySelector("#product-info h2");
                 title.innerText = obj.getAttribute("title");
-
+                
                 //  요소의 스타일에 접근 -> style 속성 이용
                 //  주의사항
-                //  CSS style의 명명 방식 snake-case : 예) background-color
+                //  CSS style의 명명 방식 kebab-case : 예) background-color
                 //  JS로 style을 부여할 때는 camelCase : 예) backgroundColor
                 title.style.color = obj.getAttribute("data-color");
-            })
+            });
         }
-    });   
+    });    
 </script>
 </html>
