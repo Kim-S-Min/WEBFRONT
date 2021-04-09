@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Components</title>
+    <!-- vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!-- View로 사용할 HTMLElement -->
+    <div id="app">
+        <!-- Header 영역: 전역 컴포넌트 -->
+        <global-header></global-header>
+        <!-- Content 영역 -->
+        <h2>{{ content }}</h2>
+        <!-- 지역 컴포넌트 -->
+        <local-component1></local-component1>
+        <local-component2></local-component2>
+    </div>
+
+    <script>
+        //  전역 컴포넌트: 모든 인스턴스에서 사용할 수 있는 컴포넌트
+        Vue.component("global-header", {
+            //  template: View로 사용할 DOM html 문자열
+            template: "<div><h1>{{title}}</h1></div>",
+            data: function() {
+                return {
+                    title: "Global-header"
+                }
+            }
+        });
+        //  지역 컴포넌트: Object Properties를 JavaScript객체로 만들고, viewModel의 components 속성에 등록해야 한다
+        var cmp1 = {
+            template: "<div><h2>Local Component</h2></div>"
+        }
+        //  Vue객체(ViewModel)
+        var app = new Vue({
+            el: "#app", //  객체에서 사용할 HTMLElement
+            data: {
+                content: "Vue Instance"
+            },
+            //  지역 컴포넌트 사용을 위해서는 components 속성에 등록해야 한다
+            components: {
+                'local-component1': cmp1,
+                "local-component2": {
+                    //  속성 설정
+                    template: "<div><h2>Local Component 2</h2></div>"
+                }
+            }
+        });
+    </script>
+</body>
+</html>
