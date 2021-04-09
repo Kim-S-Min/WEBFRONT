@@ -7,6 +7,12 @@
     <title>Ajax Example</title>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <style>
+        .poster {
+            width: 100px;
+        }
+    </style>
 </head>
 <body>
     <button id="btnCallSnippet">HTML 조각 불러오기</button>
@@ -25,6 +31,49 @@
     <script>
         //  초기화
         $(document).ready(function(event) {
+            //  영화 목록 버튼
+            $("#btnCallMovies").on("click", function(event) {
+                //  localhost:3000/movies에 json결과 요청
+                $.ajax({
+                    url: "http://localhost:3000/movies",
+                    type: "GET",
+                    dataType: "json",
+                    success: function(response) {
+                        //  성공 롤백
+                        console.log(response);
+                        //  UI에 반영
+                        //  tr 태그 생성
+                        var movies = response.movies;   //  response json의 movies 속성(배열)
+
+                        movies.forEach( movie => {
+                            //  console.log("movie: ", movie);
+                            //  table#list 에 tr로 추가
+                            var title = movie.title;
+                            var director = movie.director;
+                            var movieId = movie.id;
+
+                            var movieImage = "http://localhost:3000/images/" + movie.image;
+
+                            //  새 노드 생성
+                            var tr = $("<tr>");
+                            var htmlString = `
+                                <td><image class="poster" src="${movieImage}"/></td>
+                                <td>${title}</td>
+                                <td>${director}</td>`;
+                            //  tr 내부에 html을 채운다
+                            tr.html(htmlString);
+
+                            //  table#list에 추가
+                            $("#list").append(tr);
+                        });
+                    },
+                    error: function(response, status, error) {
+                        console.error(response);
+                        console.error(status);
+                        console.error(errer);
+                    }
+                })
+            });
             //  btnCallSnippet 버튼에 클릭이벤트 부착
             $("#btnCallSnippet").on("click", function(event) {
                 console.log("btnCallSnippet click");
