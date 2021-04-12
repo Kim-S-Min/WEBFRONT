@@ -2,7 +2,7 @@
     <div>
         <h2>산 물건들</h2>
         <ul>
-            <li v-for="(item, index) in boughtItems" v-if="item.buy">
+            <li v-for="(item, index) in filterItems" v-bind:key="index">
                 {{ item.name }}
                 <button v-on:click="removeItem(item, index)">삭제</button>
                 <button v-on:click="cancelBuy(item, index)">구매 취소</button>
@@ -22,6 +22,11 @@ export default {
              console.log("삭제할 항목:", item);
             //  삭제 이벤트발생
             this.$emit("remove-item", item);
+        }
+    },
+    computed: {
+        filterItems() {
+            return this.boughtItems.filter(item => item.buy);
         }
     }
 }

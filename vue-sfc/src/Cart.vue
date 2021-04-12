@@ -49,6 +49,24 @@ export default {
             showAll: true,  //  전체 목록 보이기 여부
             showOption: true    //  산 목록 보이기 여부
         }
+    },
+    methods: {
+        addItem: function(newItem) {
+            //  cart-input으로부터 발생한 add-item 이벤트 처리기
+            console.log("ADD ITEM:", newItem);
+            //  새 객체를 만들어서 배열에 추가
+            this.items.push({
+                name: newItem,
+                buy: false
+            });
+        },
+        removeItem: function(item) {
+            //  리스트에서 item의 인덱스 확인
+            var index = this.items.indexOf(item);
+            if (index > -1) {   //  없으면 -1
+                this.items.splice(index, 1);    //  item 배열에서 index 위치부터 1개를 삭제
+            }
+        }
     }
 }
 </script>

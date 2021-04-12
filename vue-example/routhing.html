@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vue Routing</title>
+        
+        <script src ="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    </head>
+    <body>
+        <!-- Vue 렌더링 영역 -->
+        <div id="app">
+            <h1>Routing</h1>
+            <!-- 메뉴 영역 -->
+            <ul>
+                <li>
+                    <router-link to="/">Main Page</router-link>
+                </li>
+                <li>
+                    <router-link to="/sub">Sub Page</router-link>
+                </li>
+                <li>
+                    <router-link v-bind:tp="'/param' + param1">파라미터 전송</router-link>
+                </li>
+            </ul>
+            <h1>content Area</h1>
+            <!-- 실제 컨텐츠가 표시될 영역 -->
+            <routeer-view></routeer-view>
+        </div>
+
+        <script>
+            var main = {
+                template: "<div><h2>Main</h2></div>",
+                created: function() {
+                    console.log("Main Component: created");
+                },
+                mounted: function() {
+                    console.log("Main Component: mounted");
+                },
+                destroyed: function() {
+                    console.log("Main Component: destroyed");
+                }
+            };
+
+            var sub = {
+                template: "<div><h2>Sub</h2></div>",
+                created: function() {
+                    console.log("Sub Component: created");
+                },
+                mounted: function() {
+                    console.log("Sub Component: mounted");
+                },
+                destroyed: function() {
+                    console.log("Sub Component: destroyed");
+                }
+            };
+            var paramComp = {
+                template: `<div>
+                    <h2>파라미터 전송</h2>
+                        <p>{{ paramVal }}</p>
+                    </div>`,
+                conputed: {
+                    paramVal: function() {
+                        return this.$route.params.param1;
+                    }
+                },
+                created: function() {
+                    console.log("Param Component: created");
+                },
+                mounted: function() {
+                    console.log("Param Component: mounted");
+                },
+                destoryed: function() {
+                    console.log("Param Compoenet: destoryed");
+                }
+            };
+
+            //  클라이언트 라우팅 구현을 위한 하우터 선언
+            var router = new VueRouter ({
+                //  링크 정보
+                routes: [
+                    { path: "/", component: main},  //  / -> main  컴포넌트 표시
+                    { path: "/sub", component: sub},
+                    //  동적 파라미터 전달
+                    { path: '/param/:param1', component: paramComp }
+                ]
+            });
+
+            //  Vue 객체 생성
+            new Vue ({
+                el: "#app",
+                router: router, // 라우터 등록
+                data: {
+                    param1: "파라미터 값"
+                }
+            })
+        </script>
+    </body>
